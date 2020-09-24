@@ -11,9 +11,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import datetime
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # installed
+    "rest_framework",
+    "corsheaders",
     #앱설치
     "account",
 ]
@@ -102,6 +108,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#회원 토큰사용 세팅
+# REST_FRAMEWORK={
+#     'DEFAULT_AUTHENTICATION_CLASSES':[
+#     'rest_framework.authentication.SessionAuthentication',
+#     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+#     ]
+# }
+# JWT_AUTH={
+#     "JWT_ALGORITHM":"HS256",
+#     "JWT_EXPIRATION_DELTA":datetime.timedelta(days=30),
+#     # "JWT_ALLOW_REFRESH":False,
+#     # "JWT_REFRESH_EXPIRATION_DELTA":datetime.timedelta(days=30),
+#     # "JWT_SECRET_KEY":"KEY"
+# }
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -121,3 +143,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# CORS_ORIGIN_ALLOW_ALL = True
