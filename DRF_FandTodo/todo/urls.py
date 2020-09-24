@@ -5,6 +5,9 @@ from . import views
 router = DefaultRouter()
 router.register("todogroup", views.TodoGroupView)  # 2개의 URL을 만들어준다.
 router.register("todo", views.TodoView)
+router.register("favouritegroup", views.FavouriteGroupView)
+router.register("favourite", views.FavouriteView)
+
 
 urlpatterns = [
     path("", include(router.urls)),

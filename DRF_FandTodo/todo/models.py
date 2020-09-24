@@ -19,6 +19,10 @@ class TodoGroup(models.Model):
     name = models.CharField(max_length=50)
     reg_date = models.DateField(auto_now_add=True)
     del_yn = models.BooleanField(default=False)
+    
+    #관리자 페이지에서 드롭메뉴 object 뜨는것 값으로 바꾸기
+    def __str__(self):
+        return self.name;
 
 class Todo(models.Model):
     seq = models.AutoField(primary_key=True)
@@ -33,6 +37,9 @@ class FavouriteGroup(models.Model):
     seq = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     reg_date = models.DateField(auto_now_add=True)
+    #관리자 페이지에서 드롭메뉴 object 뜨는것 값으로 바꾸기
+    def __str__(self):
+        return self.name;
 
 class Favourite(models.Model):
     seq = models.AutoField(primary_key=True)

@@ -1,5 +1,5 @@
 # from account.models import User
-from .models import TodoGroup, Todo
+from .models import TodoGroup, Todo, FavouriteGroup, Favourite
 # from django.contrib.auth import get_user_model
 # from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer, Serializer
@@ -13,7 +13,6 @@ from rest_framework.serializers import ModelSerializer, Serializer
 
 
 class TodoGroupSerializer(ModelSerializer):
-
         class Meta:
             model = TodoGroup
             fields = '__all__'
@@ -37,13 +36,9 @@ class TodoGroupSerializer(ModelSerializer):
     #     return obj.address + " (" + obj.name + ")"
 
 
-
-
-
-
 class TodoSerializer(ModelSerializer):
     class Meta:
-        model = TodoGroup
+        model = Todo
         fields = '__all__'
 
 
@@ -97,3 +92,15 @@ class TodoSerializer(ModelSerializer):
     #     if result == None:
     #         raise ValidationError("전화번호 형식이 맞지않습니다.")
     #     return value
+
+
+class FavouriteGroupSerializer(ModelSerializer):
+    class Meta:
+        model = FavouriteGroup
+        fields = '__all__'
+
+
+class FavouriteSerializer(ModelSerializer):
+    class Meta:
+        model = Favourite
+        fields = '__all__'
