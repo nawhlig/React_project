@@ -20,7 +20,6 @@ class TodoGroup(models.Model):
     reg_date = models.DateField(auto_now_add=True)
     del_yn = models.BooleanField(default=False)
 
-
 class Todo(models.Model):
     seq = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
@@ -29,3 +28,16 @@ class Todo(models.Model):
     end_date = models.DateField(blank=True)
     del_yn = models.BooleanField(default=False)
     group = models.ForeignKey(TodoGroup, on_delete=models.CASCADE) #외래키사용
+
+class FavouriteGroup(models.Model):
+    seq = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    reg_date = models.DateField(auto_now_add=True)
+
+class Favourite(models.Model):
+    seq = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    url = models.CharField(max_length=100)
+    memo = models.TextField()
+    reg_date = models.DateField(auto_now_add=True)
+    group = models.ForeignKey(FavouriteGroup, on_delete=models.CASCADE)
