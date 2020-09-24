@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "corsheaders",
     #앱설치
     "account",
+    "todo",
 ]
 
 MIDDLEWARE = [
