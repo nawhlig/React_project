@@ -16,7 +16,7 @@ class TodoGroupSerializer(ModelSerializer):
 
         class Meta:
             model = TodoGroup
-        fields = '__all__'
+            fields = '__all__'
 
     # reg_user_username = serializers.ReadOnlyField(source='reg_user.username')
     # reg_user_email = serializers.ReadOnlyField(source='reg_user.email')

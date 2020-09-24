@@ -13,9 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path("drf/todo/", include("todo.urls")),
+    # path("DRF_FandTodo/account/", include("account.urls")), #회원가입시
+    path("api-auth/", include("rest_framework.urls")),
 ]
