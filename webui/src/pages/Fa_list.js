@@ -1,12 +1,12 @@
 import React from 'react';
 // import styles from './css/Layout.module.css';
+import MainMenu from "MainMenu";
 
-
-export default function content_todo_info() {
+export default function Page_fa_list() {
     return (
         <>
         
-        <h1>여기는 할일 항목</h1>
+        <h1>여기는 즐겨찾기 목록</h1>
         
         </>
     )

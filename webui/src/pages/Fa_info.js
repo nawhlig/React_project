@@ -2,7 +2,7 @@ import React from 'react';
 // import styles from './css/Layout.module.css';
 
 
-export default function content_fa_info() {
+export default function Page_fa_info() {
     return (
         <>
         

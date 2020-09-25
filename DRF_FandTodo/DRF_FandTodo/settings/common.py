@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     #앱설치
     "account",
     "todo",
+    "exam",
 ]
 
 MIDDLEWARE = [

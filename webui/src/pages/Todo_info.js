@@ -2,11 +2,11 @@ import React from 'react';
 // import styles from './css/Layout.module.css';
 
 
-export default function content_fa_group() {
+export default function Page_todo_info() {
     return (
         <>
         
-        <h1>여기는 즐겨찾기 그룹</h1>
+        <h1>여기는 할일 항목</h1>
         
         </>
     )
