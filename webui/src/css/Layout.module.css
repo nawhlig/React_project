@@ -15,10 +15,10 @@
     padding-top: 70px;
     padding-bottom: 70px;
     text-align: center;
-    color: blue;
+    color: rgb(0, 132, 255);
     font-size: large;
     font-weight: bold;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 #content {

@@ -1,0 +1,36 @@
+#pagetop{
+    margin: 0px;
+    padding-top: 118px;
+    /* padding-bottom: 10px; */
+    text-align: left;
+    color: rgb(148, 148, 165);
+    font-size: large;
+    font-weight: bold;
+    /* background-color: aqua; */
+    height: 158px;
+}
+#pagebottom{
+    margin: 0px;
+    padding-top: 20px;
+    /* padding-bottom: 10px; */
+    /* text-align: left; */
+    /* color: rgb(148, 148, 165); */
+    /* font-size: large; */
+    /* font-weight: bold; */
+    /* background-color: aqua; */
+    height: 720px;
+}
+
+#subject, #listadd{
+    float: left;
+    margin: 0px;
+    padding-top: 8px;
+    padding-left: 15px;
+    /* background-color: rgb(128, 226, 17); */
+    width: 290px;
+    height: 40px;
+}
+
+#listadd button{
+    float: right;
+}

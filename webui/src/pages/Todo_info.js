@@ -1,13 +1,20 @@
 import React from 'react';
-// import styles from './css/Layout.module.css';
+import '../css/pages_subject.css';
+import styles from '../css/Todo_info.module.css';
+import { Button } from 'antd';
+
 
 
 export default function Page_todo_info() {
     return (
         <>
-        
-        <h1>여기는 할일 항목</h1>
-        
+
+            <div id="pagetop">
+                <div id="subject">할 일 항목</div>
+                <div id="listadd"><Button> + 추가</Button></div>
+            </div>
+            <div id="pagebottom">내용</div>
+
         </>
     )
 }
