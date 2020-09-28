@@ -1,25 +1,13 @@
 import React from 'react';
 import '../css/pages_subject.css';
 import styles from '../css/Fa_list.module.css';
-import { Button, List, Avatar } from 'antd';
-import API from 'Api';
+import { Button, List } from 'antd';
+import { SearchOutlined, RestOutlined } from '@ant-design/icons';
+import API from '../Helper/Api';
 
 
 export default function Page_fa_list() {
-    return (
-        <>
 
-            <div id="pagetop">
-                <div id="subject">즐겨찾기 목록</div>
-                <div id="listadd"><Button> + 추가</Button></div>
-            </div>
-            <div id="pagebottom"><Falist /></div>
-
-        </>
-    )
-}
-
-function Falist() {
     const [falists, setFalists] = React.useState(null);
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
@@ -45,40 +33,35 @@ function Falist() {
     if (error) return <div> API 주소에서 불러오기 실패</div>;
     if (!falists) return null;
 
+    return (
+        <>
 
-    // if (loading) return <div>로딩중..</div>;
+            <div id="pagetop">
+                <div id="subject">즐겨찾기 목록</div>
+                <div id="listadd"><Button> + 추가</Button></div>
+            </div>
+            <div id="pagebottom">
 
-    return (<>
+            <List
+                itemLayout="horizontal"
+                dataSource={falists}
+                renderItem={item => (
+                    <List.Item>
+                        <List.Item.Meta
+                            title={<span>{item.name}</span>}
+                            description={<>
+                            <span>{item.group_name}  /  </span>
+                            <span>{item.url}  /  </span>
+                            <span>{item.reg_date}</span>
+                            <Button style={{float:"right"}} shape="circle" icon={<RestOutlined />} />
+                            </>}
+                    />
+                    </List.Item>
+                    )}
+            />
 
-        < ul >
-            {falists.map(Falist => (
-                <li key={Falist.seq}>
-                    {Falist.name}
-                    {Falist.url}
-                    {Falist.memo}
-                </li>))}
-        </ul >
+            </div>
 
-    </>);
+        </>
+    )
 }
-
-//     return (
-//         <div>
-//             <List
-//                 itemLayout="horizontal"
-//                 dataSource={Falist}
-//                 renderItem={item => (
-//                     <List.Item>
-//                         <List.Item.Meta
-//                             title={<a href="https://ant.design">{item.name}</a>}
-//                             description={<>
-//                                 <span>{item.name}</span>
-//                             </>
-//                             }
-//                         />
-//                     </List.Item>
-//                 )}
-//             />
-//         </div>
-//     )
-// }
