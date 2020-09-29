@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# 회원 토큰사용 세팅
+# # 회원 토큰사용 세팅
 # REST_FRAMEWORK={
 #     'DEFAULT_AUTHENTICATION_CLASSES':[
 #     'rest_framework.authentication.SessionAuthentication',

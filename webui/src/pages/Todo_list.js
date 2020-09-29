@@ -5,10 +5,10 @@ import styles from '../css/Todo_list.module.css';
 import { Button, List} from 'antd';
 import { SearchOutlined, RestOutlined } from '@ant-design/icons';
 import API from '../Helper/Api';
-import Modal_Basic from '../Helper/Modal_Basic';
+import Todo_list_form from '../Helper/Todo_list_form';
 
 export default function Page_todo_list() {
-
+    
     const [visible, setVisible] = React.useState(false);
     const [todolists, setTodolists] = React.useState(
         { pending: [],
@@ -97,7 +97,12 @@ export default function Page_todo_list() {
                             </List.Item>
                         )}
                 />
-                <Modal_Basic visible={visible} setVisible={setVisible}/>
+                <Todo_list_form visible={visible}
+                                setVisible={setVisible}
+                                todolists={todolists}
+                                setTodolists={setTodolists}
+
+                />
             </div>
 
         </>
