@@ -2,14 +2,7 @@ import React from 'react';
 import API from './Api';
 
 // ================ 리스트 삭제기능 ======================================================
-
-export default function Todo_list_delete({ seq, todolists, setTodolists }) {
-  //페이지 리로딩 상태변화
-  const [pageloading, setPageloading] = React.useState(false);
-  const [pageloadingerror, setPageloadingError] = React.useState(null);
-  console.log('delete 함수에서 받은 값', seq);
-
-  //삭제 로직
+//삭제 로직 예시
   //   const deleteTodo = (seq) => {
   //     API.delete("todo/todo/" + seq)
   //     .then(res=>{
@@ -21,10 +14,15 @@ export default function Todo_list_delete({ seq, todolists, setTodolists }) {
   //         }
   //     )
   // }
+export default function Todo_list_delete({ seq, todolists, setTodolists }) {
+  //페이지 리로딩 상태변화
+  const [pageloading, setPageloading] = React.useState(false);
+  const [pageloadingerror, setPageloadingError] = React.useState(null);
+  console.log('Todo_list_delete 함수로 전달한 seq 값', seq);
 
-
+  
   //휴지통 버튼 클릭 이후 DB삭제, 페이지 재요청
-  const deleteTodo = (seq) => {
+  const deleteTodo = () => {
     API.delete("todo/" + seq)
       .then(response => {
 
@@ -33,6 +31,8 @@ export default function Todo_list_delete({ seq, todolists, setTodolists }) {
             setPageloadingError(null);
             setTodolists(null);
             setPageloading(true); // loading 상태를 true 로 바꿉니다.
+
+            //삭제
 
             const response = await API.get("todo/?status=할일");
             await setTodolists(prev => ({ ...prev, pending: response.data }));

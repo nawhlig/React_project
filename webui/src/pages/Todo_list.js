@@ -6,21 +6,19 @@ import { Button, List } from 'antd';
 import { SearchOutlined, RestOutlined } from '@ant-design/icons';
 import API from '../Helper/Api';
 import Todo_list_add from '../Helper/Todo_list_add';
-import Todo_list_delete from '../Helper/Todo_list_delete';
+// import Todo_list_delete from '../Helper/Todo_list_delete';
 
 export default function Page_todo_list() {
 
-    const [visible, setVisible] = React.useState(false);
-    const [todolists, setTodolists] = React.useState(
-        {
-            pending: [],
-            inprogress: [],
-            end: []
-        });
 
+    const [todolists, setTodolists] = React.useState({pending: [], inprogress: [], end: []});
+    
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
-    const [seq, setSeq] = React.useState(0);
+
+    const [visible, setVisible] = React.useState(false);
+
+    
 
     React.useEffect(() => {
         const fetchTodolists = async () => {
@@ -43,6 +41,35 @@ export default function Page_todo_list() {
         }
         fetchTodolists();
     }, []);
+
+
+    const deleteTodo = (seq) => {
+
+        const fetchTodolists = async () => {
+            try {// 요청이 시작 할 때에는 error 와 Todolist 를 초기화하고
+            
+            await API.delete("todo/" + seq + "/");
+            //삭제    
+            const response = await API.get("todo/?status=할일");
+            await setTodolists(prev => ({ ...prev, pending: response.data }));
+
+            const response2 = await API.get("todo/?status=진행중");
+            await setTodolists(prev => ({ ...prev, inprogress: response2.data }));
+
+            const response3 = await API.get("todo/?status=종료");
+            await setTodolists(prev => ({ ...prev, end: response3.data }));
+            
+            }              
+
+            catch (e) {  }
+        }
+
+        fetchTodolists();
+          
+      }
+
+
+
 
     if (loading) return <div>로딩중..</div>;
     if (error) return <div> 목록 불러오기 실패</div>;
@@ -67,11 +94,11 @@ export default function Page_todo_list() {
                                 description={<span>{item.end_date}</span>}
                             />
                             <Button
-                                onMouseEnter={() => { setSeq(item.seq); console.log('리스트번호', item.seq); console.log('상태값', seq) }}
-                                onClick={() => { console.log('클릭한 seq값', seq); Todo_list_delete(seq); }}
-                                style={{ float: "right" }} shape="circle" icon={<RestOutlined />} />
+                                style={{ float: "right" }} shape="circle" icon={<RestOutlined />}
+                                onMouseEnter={() => { console.log('선택된 리스트번호:', item.seq) }}
+                                onClick={() => { console.log('삭제된 리스트번호:', item.seq); deleteTodo(item.seq) }}
+                            />
                         </List.Item>
-
                     )}
                 />
 
@@ -85,7 +112,11 @@ export default function Page_todo_list() {
                             <List.Item.Meta title={<span>{item.name}</span>}
                                 description={<span>{item.end_date}</span>}
                             />
-                            <Button style={{ float: "right" }} shape="circle" icon={<RestOutlined />} />
+                            <Button
+                                style={{ float: "right" }} shape="circle" icon={<RestOutlined />}
+                                onMouseEnter={() => { console.log('선택된 리스트번호:', item.seq) }}
+                                onClick={() => { console.log('삭제된 리스트번호:', item.seq); deleteTodo(item.seq) }}
+                            />
                         </List.Item>
                     )}
                 />
@@ -100,7 +131,11 @@ export default function Page_todo_list() {
                             <List.Item.Meta title={<span>{item.name}</span>}
                                 description={<span>{item.end_date}</span>}
                             />
-                            <Button style={{ float: "right" }} shape="circle" icon={<RestOutlined />} />
+                            <Button
+                                style={{ float: "right" }} shape="circle" icon={<RestOutlined />}
+                                onMouseEnter={() => { console.log('선택된 리스트번호:', item.seq) }}
+                                onClick={() => { console.log('삭제된 리스트번호:', item.seq); deleteTodo(item.seq) }}
+                            />
                         </List.Item>
                     )}
                 />
@@ -109,9 +144,7 @@ export default function Page_todo_list() {
                     todolists={todolists}
                     setTodolists={setTodolists}
                 />
-                <Todo_list_delete seq={seq}
-                    todolists={todolists}
-                    setTodolists={setTodolists} />
+
             </div>
 
         </>
