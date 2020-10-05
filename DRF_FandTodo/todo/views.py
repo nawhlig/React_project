@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .models import TodoGroup, Todo, FavouriteGroup, Favourite
-from rest_framework.decorators import api_view
 from rest_framework import status, viewsets
-from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.response import Response    #함수뷰 Response기능
+from rest_framework.decorators import api_view #인증
 from .serializers import (
     TodoGroupSerializer,
     TodoSerializer,
