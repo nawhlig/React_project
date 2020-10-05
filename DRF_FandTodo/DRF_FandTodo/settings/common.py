@@ -112,19 +112,19 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # # 회원 토큰사용 세팅
-# REST_FRAMEWORK={
-#     'DEFAULT_AUTHENTICATION_CLASSES':[
-#     'rest_framework.authentication.SessionAuthentication',
-#     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-#     ]
-# }
-# JWT_AUTH={
-#     "JWT_ALGORITHM":"HS256",
-#     "JWT_EXPIRATION_DELTA":datetime.timedelta(days=30),
-#     # "JWT_ALLOW_REFRESH":False,
-#     # "JWT_REFRESH_EXPIRATION_DELTA":datetime.timedelta(days=30),
-#     # "JWT_SECRET_KEY":"KEY"
-# }
+REST_FRAMEWORK={
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+    'rest_framework.authentication.SessionAuthentication',
+    'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ]
+}
+JWT_AUTH={
+    "JWT_ALGORITHM":"HS256",
+    "JWT_EXPIRATION_DELTA":datetime.timedelta(days=30),
+    # "JWT_ALLOW_REFRESH":False,
+    # "JWT_REFRESH_EXPIRATION_DELTA":datetime.timedelta(days=30),
+    # "JWT_SECRET_KEY":"KEY"
+}
 
 
 # Internationalization
@@ -143,7 +143,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATIC_URL = "/static/"
 
 

@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 
 urlpatterns=[
-    #path('login',views.signUp),
+    path('login',views.signUp),
     path('api-jwt-auth/',obtain_jwt_token),
     path('refresh_jwt-auth',refresh_jwt_token),
     path('verify_jwt-auth',verify_jwt_token)

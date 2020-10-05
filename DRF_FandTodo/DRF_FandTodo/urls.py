@@ -21,6 +21,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("drf/todo/", include("todo.urls")),
     path("drf/exam/", include("exam.urls")),
-    path("account/", include("account.urls")), #회원가입시
-    path("api-auth/", include("rest_framework.urls")),
+    path("account/", include("account.urls")), # JWT 회원가입시 
+    path("api-auth/", include("rest_framework.urls")),  #django DRF 인증용 기본세팅
 ]
