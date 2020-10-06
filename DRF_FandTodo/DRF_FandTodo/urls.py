@@ -16,6 +16,8 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -23,4 +25,4 @@ urlpatterns = [
     path("drf/exam/", include("exam.urls")),
     path("account/", include("account.urls")), # JWT 회원가입시 
     path("api-auth/", include("rest_framework.urls")),  #django DRF 인증용 기본세팅
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
