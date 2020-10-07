@@ -30,6 +30,7 @@ class Todo(models.Model):
     status = models.CharField(max_length=10)
     reg_date = models.DateField(auto_now_add=True)
     end_date = models.DateField(blank=True)
+    image = models.ImageField(null=True)
     del_yn = models.BooleanField(default=False)
     group = models.ForeignKey(TodoGroup, on_delete=models.CASCADE) #외래키사용
 
