@@ -5,4 +5,5 @@ Pillow
 pylint
 django-cors-headers
 mysqlclient
-
+boto3
+django-storages

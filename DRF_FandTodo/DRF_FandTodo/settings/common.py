@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import datetime
-from . import private_mysql
+from . import private_aws_mysql
+from . import private_aws_s3
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -92,7 +93,7 @@ WSGI_APPLICATION = "DRF_FandTodo.wsgi.application"
 #     }
 # }
 
-DATABASES = private_mysql.DATABASES
+DATABASES = private_aws_mysql.DATABASES
 
 AUTH_USER_MODEL = "account.USER"
 
@@ -154,3 +155,14 @@ CORS_ALLOW_CREDENTIALS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+AWS_ACCESS_KEY_ID = private_aws_s3.AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = private_aws_s3.AWS_SECRET_ACCESS_KEY
+AWS_REGION = private_aws_s3.AWS_REGION
+AWS_STORAGE_BUCKET_NAME=private_aws_s3.AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN='%s.s3.%s.amazonaws.com'% (AWS_STORAGE_BUCKET_NAME,AWS_REGION)
+AWS_S3_OBJECT_PARAMETERS={
+    'CacheControl':'max-age=86400',
+}
+DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
